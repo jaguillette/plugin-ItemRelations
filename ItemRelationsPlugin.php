@@ -27,6 +27,7 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
         'admin_items_batch_edit_form',
         'items_batch_edit_custom',
         'public_items_show',
+        'public_items_browse_each',
         'items_browse_sql',
     );
 
@@ -251,6 +252,20 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
             $item = get_current_record('item');
 
             echo common('item-relations-show', array(
+                'subjectRelations' => self::prepareSubjectRelations($item),
+                'objectRelations' => self::prepareObjectRelations($item)
+            ));
+        }
+    }
+
+    /**
+     * Display item relations on the public items browse page.
+     */
+    public function hookPublicItemsBrowseEach() {
+        if (get_option('item_relations_public_append_to_items_show')) {
+            $item = get_current_record('item');
+
+            echo common('item-relations-browse', array(
                 'subjectRelations' => self::prepareSubjectRelations($item),
                 'objectRelations' => self::prepareObjectRelations($item)
             ));
