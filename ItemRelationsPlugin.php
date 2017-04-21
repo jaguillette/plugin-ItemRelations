@@ -152,6 +152,7 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
     {
         $publicAppendToItemsShow = get_option('item_relations_public_append_to_items_show');
         $relationFormat = get_option('item_relations_relation_format');
+        $relationTitle = get_option('item_relations_display_title');
 
         require dirname(__FILE__) . '/config_form.php';
     }
@@ -165,6 +166,8 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
             (int)(boolean) $_POST['item_relations_public_append_to_items_show']);
         set_option('item_relations_relation_format',
             $_POST['item_relations_relation_format']);
+        set_option('item_relations_display_title',
+            $_POST['item_relations_display_title']);
     }
 
     /**
@@ -296,7 +299,7 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
             'formSelectProperties' => get_table_options('ItemRelationsProperty'))
         );
     }
-    
+
     /**
      * Save the item relations after saving an item add/edit form.
      *

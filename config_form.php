@@ -26,3 +26,18 @@
         <?php echo get_view()->formSelect('item_relations_relation_format', $relationFormat, null, array('prefix_local_part' => 'prefix:localPart', 'label' => 'label')); ?>
     </div>
 </div>
+<div class="field">
+  <div class="two columns alpha">
+    <?php echo get_view()->formLabel('item_relations_display_title', __('Display Title')); ?>
+  </div>
+  <div class="inputs five columns omega">
+    <p class="explanation">
+      <?php
+      echo __('Enter the title that you would like for the "Item Relations" '
+          . 'display section. If left blank, this defaults to "Item Relations".');
+      ?>
+    </p>
+    <?php echo get_view()->formText('item_relations_display_title', $relationTitle); ?>
+  </div>
+
+</div>
