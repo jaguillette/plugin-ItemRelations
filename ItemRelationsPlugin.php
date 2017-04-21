@@ -482,6 +482,7 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
                 'item_relation_id' => $subject->id,
                 'object_item_id' => $subject->object_item_id,
                 'object_item_title' => self::getItemTitle($item),
+                'object_item_type' => self::getItemType($item),
                 'relation_text' => $subject->getPropertyText(),
                 'relation_description' => $subject->property_description
             );
@@ -507,6 +508,7 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
                 'item_relation_id' => $object->id,
                 'subject_item_id' => $object->subject_item_id,
                 'subject_item_title' => self::getItemTitle($item),
+                'subject_item_type' => self::getItemType($item),
                 'relation_text' => $object->getPropertyText(),
                 'relation_description' => $object->property_description
             );
@@ -527,6 +529,21 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
             $title = '#' . $item->id;
         }
         return $title;
+    }
+
+    /**
+     * Return an item's Item Type formatted in a span, if present.
+     *
+     * @param Item $item The item.
+     * @return string
+     */
+    public static function getItemType($item)
+    {
+        $type = metadata($item,'item_type_name');
+        if ($type) {
+          $type = " <span class=\"item-type\">(".$type.")</span>";
+        }
+        return $type;
     }
 
     /**
