@@ -1,6 +1,5 @@
 <div id="item-relations-display-item-relations">
     <h2>Hello world! <?php
-    echo "You're in the right place";
       if (get_option('item_relations_display_title')) {
         echo __(get_option('item_relations_display_title'));
       } else {
