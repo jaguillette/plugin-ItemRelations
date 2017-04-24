@@ -39,5 +39,18 @@
     </p>
     <?php echo get_view()->formText('item_relations_display_title', $relationTitle); ?>
   </div>
-
+</div>
+<div class="field">
+  <div class="two columns alpha">
+    <?php echo get_view()->formLabel('item_relations_show_type',__('Show Item Type')); ?>
+  </div>
+  <div class="inputs five columns omega">
+    <p class="explanation">
+      <?php
+      echo __('Choose whether or not to include Item Types in the display'
+          . ' of Item Relations');
+      ?>
+    </p>
+    <?php echo get_view()->formCheckbox('item_relations_show_type',null,array('checked' => $showItemType)); ?>
+  </div>
 </div>
